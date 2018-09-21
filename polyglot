@@ -1,0 +1,43 @@
+#Polyglot is a open-source library support 130 languages
+# Create a new text object using Polyglot's Text class: txt
+txt = Text(article)
+
+# Print each of the entities found
+for ent in txt.entities:
+    print(ent)
+    
+# Print the type of ent
+print(type(ent))
+
+
+#use a list comprehension to create a list of tuples, 
+#in which the first element is the entity tag, 
+#and the second element is the full string of the entity text.
+# Create the list of tuples: entities
+entities = [(ent.tag, ' '.join(ent)) for ent in txt.entities]
+
+# Print entities
+print(entities)
+
+
+#You'll continue your exploration of polyglot now with some Spanish annotation. 
+#This article is not written by a newspaper, so it is your first example of a more blog-like text. 
+#How do you think that might compare when finding entities?
+#Your specific task is to determine how many of the entities contain the words "Márquez" or "Gabo" 
+#- these refer to the same person in different ways!
+# Initialize the count variable: count
+count = 0
+
+# Iterate over all the entities
+for ent in txt.entities:
+    # Check whether the entity contains 'Márquez' or 'Gabo'
+    if "Márquez" in ent or "Gabo" in ent:
+        # Increment count
+        count += 1
+
+# Print count
+print(count)
+
+# Calculate the percentage of entities that refer to "Gabo": percentage
+percentage = count / len(txt.entities)
+print(percentage)
